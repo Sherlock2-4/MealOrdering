@@ -114,7 +114,7 @@ public class OrderSummary extends AppCompatActivity {
 
         if (totalPrice >= 180) {
 
-            data.add(new SummaryListItem("Applied Promo: Student Deal\nTotal Order ≥ 180", "₱ -15"));
+            data.add(new SummaryListItem("Applied Promo: Student Deal\nTotal Order Price ≥ 180", "₱ -15"));
             finalPrice -= 15;
         }
 
