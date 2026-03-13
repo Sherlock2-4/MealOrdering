@@ -19,7 +19,8 @@
             android:background="@drawable/back"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:text=""
+            android:onClick="backPressed"/>
 
         <TextView
             android:id="@+id/tvMainDish"
@@ -75,7 +76,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="None" />
+                android:text="None"
+                android:onClick="cbNonePressed"/>
 
             <CheckBox
                 android:id="@+id/cbFries"
@@ -85,7 +87,8 @@
                 android:buttonTint="#FF9800"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="Fries" />
+                android:text="Fries"
+                android:onClick="sidePressed"/>
 
             <CheckBox
                 android:id="@+id/cbLumpia"
@@ -95,7 +98,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Lumpia (4pcs)" />
+                android:text="Lumpia (4pcs)"
+                android:onClick="sidePressed"/>
 
             <CheckBox
                 android:id="@+id/cbSoup"
@@ -105,7 +109,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Soup" />
+                android:text="Soup"
+                android:onClick="sidePressed"/>
 
             <CheckBox
                 android:id="@+id/cbRice"
@@ -115,7 +120,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Extra Rice" />
+                android:text="Extra Rice"
+                android:onClick="sidePressed"/>
         </LinearLayout>
 
         <LinearLayout
