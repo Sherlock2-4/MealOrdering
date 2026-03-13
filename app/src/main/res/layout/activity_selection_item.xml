@@ -37,153 +37,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold|italic"
-        android:text="Side (Choose 2)" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_marginTop="10dp"
-        android:layout_width="300dp"
-        android:background="#FF9800"
-        android:layout_gravity="center"
-        android:layout_height="3dp" />
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="200dp"
-            android:padding="15dp"
-
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/cbNone"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:buttonTint="#FF9800"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:text="None"
-                android:onClick="cbNonePressed"/>
-
-            <CheckBox
-                android:id="@+id/cbFries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:buttonTint="#FF9800"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Fries"
-                android:onClick="sidePressed"/>
-
-            <CheckBox
-                android:id="@+id/cbLumpia"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:buttonTint="#FF9800"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:text="Lumpia (4pcs)"
-                android:onClick="sidePressed"/>
-
-            <CheckBox
-                android:id="@+id/cbSoup"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:buttonTint="#FF9800"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:text="Soup"
-                android:onClick="sidePressed"/>
-
-            <CheckBox
-                android:id="@+id/cbRice"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:buttonTint="#FF9800"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:text="Extra Rice"
-                android:onClick="sidePressed"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_height="26dp"
-                android:gravity="bottom|end"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_height="35dp"
-                android:gravity="bottom|end"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:text="₱ 35.00" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_height="35dp"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:gravity="bottom|end"
-                android:text="₱ 40.00" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_height="35dp"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:gravity="bottom|end"
-                android:text="₱ 25.00" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:gravity="bottom|end"
-                android:text="₱ 20.00" />
-        </LinearLayout>
-    </LinearLayout>
-
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -194,6 +47,152 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Side (Choose 2)"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold|italic" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="300dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#FF9800" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <CheckBox
+                        android:id="@+id/cbNone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="#FF9800"
+                        android:onClick="cbNonePressed"
+                        android:text="None"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbFries"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="#FF9800"
+                        android:onClick="sidePressed"
+                        android:text="Fries"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbLumpia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="#FF9800"
+                        android:onClick="sidePressed"
+                        android:text="Lumpia (4pcs)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbSoup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="#FF9800"
+                        android:onClick="sidePressed"
+                        android:text="Soup"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbRice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="#FF9800"
+                        android:onClick="sidePressed"
+                        android:text="Extra Rice"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="bottom|end"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="bottom|end"
+                        android:text="₱ 35.00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="bottom|end"
+                        android:text="₱ 40.00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="bottom|end"
+                        android:text="₱ 25.00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="bottom|end"
+                        android:text="₱ 20.00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView34"
@@ -384,6 +383,14 @@
                         android:text="₱ 20.00" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_pick"
+                android:text="Proceed" />
         </LinearLayout>
     </ScrollView>
 
