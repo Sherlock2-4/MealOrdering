@@ -58,7 +58,21 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lvSummary"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
+
+    <Button
+        android:id="@+id/btnCheckOut"
+        android:layout_width="300dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_pick"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:text="Check Out" />
+
 
 </LinearLayout>
