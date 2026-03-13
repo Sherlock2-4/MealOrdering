@@ -1,7 +1,11 @@
 package com.example.mealordering;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,5 +44,22 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MainDishAdapter(this, data);
         lv.setAdapter(adapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainDishListItem item = data.get(position);
+                DataHolder.selectedMainDishDrawable = item.dMainDish;
+                DataHolder.selectedMainDishName = item.mainDishName;
+                DataHolder.selectMainDishPrice = item.mainDishPrice;
+
+                StartSelectionItem();
+            }
+        });
     }
+
+    public void StartSelectionItem() {
+        Intent i = new Intent(this, SelectionItem.class);
+        startActivity(i);
+    }
+
 }

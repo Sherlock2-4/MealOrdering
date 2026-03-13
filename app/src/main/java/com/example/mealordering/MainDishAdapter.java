@@ -11,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class MainDishAdapter extends BaseAdapter {
+
+    DecimalFormat df;
 
     LayoutInflater inflater;
     List<MainDishListItem> data;
@@ -21,6 +24,7 @@ public class MainDishAdapter extends BaseAdapter {
     public MainDishAdapter(Context context, List<MainDishListItem> data){
         inflater = LayoutInflater.from(context);
         this.data = data;
+        df = new DecimalFormat("###.00");
     }
 
     @Override
@@ -70,7 +74,7 @@ public class MainDishAdapter extends BaseAdapter {
         MainDishListItem item = data.get(position);
         vh.ivDish.setImageDrawable(item.dMainDish);
         vh.tvDishName.setText(item.mainDishName);
-        vh.tvDishPrice.setText("₱  " + item.mainDishPrice);
+        vh.tvDishPrice.setText("₱  " + df.format(item.mainDishPrice));
 
         return convertView;
     }

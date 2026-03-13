@@ -8,7 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class selection_item extends AppCompatActivity {
+public class SelectionItem extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
