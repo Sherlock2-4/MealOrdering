@@ -69,13 +69,7 @@ public class SelectionItem extends AppCompatActivity {
         DataHolder.selectedAddonName = new ArrayList<>();
         DataHolder.selectedAddonPrice = new ArrayList<>();
 
-//        TimePickerDialog tpd = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-//            @Override
-//            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//
-//            }
-//        }, 1, 1, false);
-//        tpd.show();
+
     }
 
     public void cbNonePressed(View view) {

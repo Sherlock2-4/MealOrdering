@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_marginTop="80dp"
         android:layout_height="50dp"
@@ -52,7 +52,7 @@
          />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/etPhone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:ems="10"
@@ -74,13 +74,14 @@
 
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/etTime"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
             android:drawableStart="@drawable/time"
             android:paddingStart="10dp"
+            android:editable="false"
 
             android:layout_marginEnd="10dp"
             android:background="@drawable/selected_field"
@@ -96,7 +97,8 @@
             android:layout_weight="1"
             android:background="@drawable/button_pick"
             android:textStyle="bold"
-            android:text="Pick-up" />
+            android:text="Set Pick-up Time"
+            android:onClick="setTimePressed"/>
     </LinearLayout>
 
     <View
@@ -115,5 +117,6 @@
         android:textSize="16dp"
         android:background="@drawable/button_pick"
         android:layout_height="wrap_content"
-        android:text="Confirm Information" />
+        android:text="Confirm Information"
+        android:onClick="confirmPressed"/>
 </LinearLayout>
