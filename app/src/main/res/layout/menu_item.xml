@@ -17,11 +17,10 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_marginStart="10dp"
-            android:layout_width="100dp"
-            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/beef_tapa" />
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/textView2"

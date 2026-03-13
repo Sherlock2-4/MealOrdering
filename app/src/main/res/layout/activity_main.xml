@@ -26,6 +26,7 @@
         android:layout_height="3dp" />
 
     <ListView
+        android:id="@+id/lvMainDish"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
