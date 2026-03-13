@@ -1,9 +1,13 @@
 package com.example.mealordering;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -74,12 +78,29 @@ public class OrderSummary extends AppCompatActivity {
         if (!isPromoCActive) {
             promoD();
         }
+        promoA();
+        promoB();
 
         data.add(new SummaryListItem("Final Price","₱ " + finalPrice));
     }
 
-    public void promoA() {}
-    public void promoB() {}
+    public void promoA() {
+
+        if (!DataHolder.selectedDrinkName.equals("Water")) {
+
+            data.add(new SummaryListItem("Applied Promo: Combo Saver\nMain + Drink", "₱ -" + DataHolder.selectedMainDishPrice * 0.10));
+            finalPrice -= DataHolder.selectedMainDishPrice * 0.10;
+        }
+    }
+    public void promoB() {
+
+        if (DataHolder.selectedSideName.size() == 2) {
+
+            data.add(new SummaryListItem("Applied Promo: Side Bundle\n2 Sides Chosen", "₱ -10"));
+            finalPrice -= 10;
+
+        }
+    }
     public void promoC() {
 
         if (DataHolder.selectedMainDishName.equals("Veggie Bowl") && DataHolder.selectedDrinkName.equals("Water") && !DataHolder.selectedAddonName.contains("Cheese")) {
@@ -97,5 +118,28 @@ public class OrderSummary extends AppCompatActivity {
             finalPrice -= 15;
         }
 
+    }
+
+    public void checkOutPressed(View view) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Thank You");
+        builder.setMessage("Please wait for your order soon.");
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                okPressed();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    public void okPressed() {
+        Intent i = new Intent(this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 }
