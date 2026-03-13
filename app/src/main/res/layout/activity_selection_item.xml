@@ -227,21 +227,24 @@
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
-                        android:text="Water" />
+                        android:text="Water"
+                        android:onClick="drinkPressed"/>
 
                     <RadioButton
                         android:id="@+id/rbIcedTea"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
-                        android:text="Iced Tea" />
+                        android:text="Iced Tea"
+                        android:onClick="drinkPressed"/>
 
                     <RadioButton
                         android:id="@+id/rbSoda"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
-                        android:text="Soda" />
+                        android:text="Soda"
+                        android:onClick="drinkPressed"/>
 
                     <RadioButton
                         android:id="@+id/rbFruitShake"
@@ -249,7 +252,8 @@
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Fruit Shake" />
+                        android:text="Fruit Shake"
+                        android:onClick="drinkPressed"/>
                 </RadioGroup>
 
                 <LinearLayout
@@ -390,7 +394,8 @@
                 android:layout_margin="20dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_pick"
-                android:text="Proceed" />
+                android:text="Proceed"
+                android:onClick="proceedPressed"/>
         </LinearLayout>
     </ScrollView>
 

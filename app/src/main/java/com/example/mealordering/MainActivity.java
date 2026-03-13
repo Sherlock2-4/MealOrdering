@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 MainDishListItem item = data.get(position);
                 DataHolder.selectedMainDishDrawable = item.dMainDish;
                 DataHolder.selectedMainDishName = item.mainDishName;
-                DataHolder.selectMainDishPrice = item.mainDishPrice;
+                DataHolder.selectedMainDishPrice = item.mainDishPrice;
 
                 StartSelectionItem();
             }
