@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class OrderSummary extends AppCompatActivity {
     double totalPrice;
     double finalPrice;
     boolean isPromoCActive;
+    DecimalFormat df;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class OrderSummary extends AppCompatActivity {
         });
 
        lv = findViewById(R.id.lvSummary);
+
+        df = new DecimalFormat("###.00");
 
        data = new ArrayList<>();
 
@@ -55,23 +59,23 @@ public class OrderSummary extends AppCompatActivity {
 
     public void addAllSelectedData() {
 
-        data.add(new SummaryListItem("Main Dish: " + DataHolder.selectedMainDishName, "₱ " + DataHolder.selectedMainDishPrice));
+        data.add(new SummaryListItem("Main Dish: " + DataHolder.selectedMainDishName, "₱ " + df.format(DataHolder.selectedMainDishPrice)));
         totalPrice += DataHolder.selectedMainDishPrice;
 
-        data.add(new SummaryListItem("Drink: " + DataHolder.selectedDrinkName, "₱ " + DataHolder.selectedDrinkPrice));
+        data.add(new SummaryListItem("Drink: " + DataHolder.selectedDrinkName, "₱ " + df.format(DataHolder.selectedDrinkPrice)));
         totalPrice += DataHolder.selectedDrinkPrice;
 
         for(int i = 0; i < DataHolder.selectedSideName.size(); i++) {
-            data.add(new SummaryListItem("Side Dish: " + DataHolder.selectedSideName.get(i), "₱ " + DataHolder.selectedSidePrice.get(i)));
+            data.add(new SummaryListItem("Side Dish: " + DataHolder.selectedSideName.get(i), "₱ " + df.format(DataHolder.selectedSidePrice.get(i))));
             totalPrice += DataHolder.selectedSidePrice.get(i);
         }
 
         for(int i = 0; i < DataHolder.selectedAddonName.size(); i++) {
-            data.add(new SummaryListItem("Addons: " + DataHolder.selectedAddonName.get(i), "₱ " + DataHolder.selectedAddonPrice.get(i)));
+            data.add(new SummaryListItem("Addons: " + DataHolder.selectedAddonName.get(i), "₱ " + df.format(DataHolder.selectedAddonPrice.get(i))));
             totalPrice += DataHolder.selectedAddonPrice.get(i);
         }
 
-        data.add(new SummaryListItem("Sub-Total\n\n","₱ " + totalPrice));
+        data.add(new SummaryListItem("Sub-Total\n\n","₱ " + df.format(totalPrice)));
 
         finalPrice = totalPrice;
         promoC();
@@ -81,14 +85,14 @@ public class OrderSummary extends AppCompatActivity {
         promoA();
         promoB();
 
-        data.add(new SummaryListItem("Final Price","₱ " + finalPrice));
+        data.add(new SummaryListItem("Final Price","₱ " + df.format(finalPrice)));
     }
 
     public void promoA() {
 
         if (!DataHolder.selectedDrinkName.equals("Water")) {
 
-            data.add(new SummaryListItem("Applied Promo: Combo Saver\nMain + Drink", "₱ -" + DataHolder.selectedMainDishPrice * 0.10));
+            data.add(new SummaryListItem("Applied Promo: Combo Saver\nMain + Drink", "₱ -" + df.format(DataHolder.selectedMainDishPrice * 0.10)));
             finalPrice -= DataHolder.selectedMainDishPrice * 0.10;
         }
     }
@@ -96,7 +100,7 @@ public class OrderSummary extends AppCompatActivity {
 
         if (DataHolder.selectedSideName.size() == 2) {
 
-            data.add(new SummaryListItem("Applied Promo: Side Bundle\n2 Sides Chosen", "₱ -10"));
+            data.add(new SummaryListItem("Applied Promo: Side Bundle\n2 Sides Chosen", "₱ -10.00"));
             finalPrice -= 10;
 
         }
@@ -105,7 +109,7 @@ public class OrderSummary extends AppCompatActivity {
 
         if (DataHolder.selectedMainDishName.equals("Veggie Bowl") && DataHolder.selectedDrinkName.equals("Water") && !DataHolder.selectedAddonName.contains("Cheese")) {
 
-            data.add(new SummaryListItem("Applied Promo: Healthy Choice\nVeggie Bowl, Water, No Cheese", "₱ -20"));
+            data.add(new SummaryListItem("Applied Promo: Healthy Choice\nVeggie Bowl, Water, No Cheese", "₱ -20.00"));
             finalPrice -= 20;
             isPromoCActive = true;
         }
@@ -114,7 +118,7 @@ public class OrderSummary extends AppCompatActivity {
 
         if (totalPrice >= 180) {
 
-            data.add(new SummaryListItem("Applied Promo: Student Deal\nTotal Order Price ≥ 180", "₱ -15"));
+            data.add(new SummaryListItem("Applied Promo: Student Deal\nTotal Order Price ≥ 180", "₱ -15.00"));
             finalPrice -= 15;
         }
 
