@@ -234,6 +234,7 @@
                         android:id="@+id/rbIcedTea"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
+                        android:layout_marginTop="8dp"
                         android:layout_height="wrap_content"
                         android:text="Iced Tea"
                         android:onClick="drinkPressed"/>
@@ -242,6 +243,7 @@
                         android:id="@+id/rbSoda"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
+                        android:layout_marginTop="8dp"
                         android:layout_height="wrap_content"
                         android:text="Soda"
                         android:onClick="drinkPressed"/>
@@ -272,6 +274,7 @@
                         android:id="@+id/textView12"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
+
                         android:gravity="center|end"
                         android:text="₱ 20.00"
                         android:textColor="@color/black"
@@ -283,6 +286,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:gravity="center|end"
+                        android:layout_marginTop="8dp"
                         android:text="₱ 25.00"
                         android:textColor="@color/black"
                         android:textSize="15dp"
@@ -294,6 +298,7 @@
                         android:layout_height="35dp"
                         android:gravity="center|end"
                         android:text="₱ 45.00"
+                        android:layout_marginTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -319,7 +324,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:padding="15dp"
+                android:padding="25dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
