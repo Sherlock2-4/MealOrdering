@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MealOrdering">
         <activity
+            android:name=".selection_item"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
