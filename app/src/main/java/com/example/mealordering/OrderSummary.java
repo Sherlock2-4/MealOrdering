@@ -75,7 +75,7 @@ public class OrderSummary extends AppCompatActivity {
             totalPrice += DataHolder.selectedAddonPrice.get(i);
         }
 
-        data.add(new SummaryListItem("Sub-Total\n\n","₱ " + df.format(totalPrice)));
+        data.add(new SummaryListItem("Sub-Total\n","₱ " + df.format(totalPrice)));
 
         finalPrice = totalPrice;
         promoC();
