@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -29,6 +30,7 @@ public class SelectionItem extends AppCompatActivity {
     RadioButton rbWater, rbIcedTea, rbSoda, rbFruitShake;
     int numOfSide;
     boolean isSideSelected, isDrinkSelected;
+    ImageView ivSelectedMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,9 @@ public class SelectionItem extends AppCompatActivity {
         DataHolder.selectedSidePrice = new ArrayList<>();
         DataHolder.selectedAddonName = new ArrayList<>();
         DataHolder.selectedAddonPrice = new ArrayList<>();
+
+        ivSelectedMain = findViewById(R.id.ivSelectedImage);
+        ivSelectedMain.setImageDrawable(DataHolder.selectedMainDishDrawable);
 
 
     }
