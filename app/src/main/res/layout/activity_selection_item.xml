@@ -22,7 +22,7 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/tvMainDish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -68,7 +68,7 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cbNone"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="#FF9800"
@@ -78,7 +78,7 @@
                 android:text="None" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/cbFries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -88,7 +88,7 @@
                 android:text="Fries" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/cbLumpia"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="#FF9800"
@@ -98,7 +98,7 @@
                 android:text="Lumpia (4pcs)" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/cbSoup"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="#FF9800"
@@ -108,7 +108,7 @@
                 android:text="Soup" />
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/cbRice"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="#FF9800"
@@ -121,7 +121,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -130,7 +130,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_height="26dp"
                 android:gravity="bottom|end"
-                android:text="Free" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -177,32 +177,35 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold|italic"
-        android:text="Drink (Choose 1)" />
 
-    <View
-        android:id="@+id/view24"
-        android:layout_marginTop="10dp"
-        android:layout_width="300dp"
-        android:background="#FF9800"
-        android:layout_gravity="center"
-        android:layout_height="3dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                android:text="Drink (Choose 1)" />
+
+            <View
+                android:id="@+id/view24"
+                android:layout_marginTop="10dp"
+                android:layout_width="300dp"
+                android:background="#FF9800"
+                android:layout_gravity="center"
+                android:layout_height="3dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -215,28 +218,28 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/rbWater"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:text="Water" />
 
                     <RadioButton
-                        android:id="@+id/radioButton2"
+                        android:id="@+id/rbIcedTea"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:text="Iced Tea" />
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
+                        android:id="@+id/rbSoda"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:text="Soda" />
 
                     <RadioButton
-                        android:id="@+id/radioButton4"
+                        android:id="@+id/rbFruitShake"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
@@ -306,7 +309,8 @@
                 android:layout_height="3dp" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
+                android:padding="15dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -315,21 +319,21 @@
                     android:orientation="vertical">
 
                     <CheckBox
-                        android:id="@+id/checkBox6"
+                        android:id="@+id/cbEgg"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:text="Egg" />
 
                     <CheckBox
-                        android:id="@+id/checkBox7"
+                        android:id="@+id/cbExtraSauce"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"
                         android:text="Extra Sauce" />
 
                     <CheckBox
-                        android:id="@+id/checkBox8"
+                        android:id="@+id/cbCheese"
                         android:layout_width="match_parent"
                         android:buttonTint="#FF9800"
                         android:layout_height="wrap_content"

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MealOrdering">
         <activity
+            android:name=".OrderForm"
+            android:exported="false" />
+        <activity
             android:name=".SelectionItem"
             android:exported="false" />
         <activity
