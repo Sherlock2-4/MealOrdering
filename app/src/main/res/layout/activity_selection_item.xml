@@ -231,6 +231,7 @@
                 android:padding="20dp">
 
                 <RadioGroup
+                    android:id="@+id/rgDrink"
                     android:layout_width="200dp"
                     android:layout_height="match_parent">
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -21,13 +22,14 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectionItem extends AppCompatActivity {
 
     TextView tvMainDish;
-    CheckBox cbNone, cbFries, cbLumpia, cbSoup, cbRice;
+    List<CheckBox> cbgSide;
     CheckBox cbEgg, cbExtraSauce, cbCheese;
-    RadioButton rbWater, rbIcedTea, rbSoda, rbFruitShake;
+    RadioGroup rgDrink;
     int numOfSide;
     boolean isSideSelected, isDrinkSelected;
     ImageView ivSelectedMain;
@@ -44,36 +46,32 @@ public class SelectionItem extends AppCompatActivity {
         });
 
         numOfSide = 0;
+        isDrinkSelected = false;
+        isSideSelected = false;
 
         tvMainDish = findViewById(R.id.tvMainDish);
         tvMainDish.setText(DataHolder.selectedMainDishName);
 
-        cbNone = findViewById(R.id.cbNone);
-        cbFries = findViewById(R.id.cbFries);
-        cbLumpia = findViewById(R.id.cbLumpia);
-        cbSoup = findViewById(R.id.cbSoup);
-        cbRice = findViewById(R.id.cbRice);
+        ivSelectedMain = findViewById(R.id.ivSelectedImage);
+        ivSelectedMain.setImageDrawable(DataHolder.selectedMainDishDrawable);
+
+        cbgSide = new ArrayList<>();
+        cbgSide.add(findViewById(R.id.cbNone));
+        cbgSide.add(findViewById(R.id.cbFries));
+        cbgSide.add(findViewById(R.id.cbLumpia));
+        cbgSide.add(findViewById(R.id.cbSoup));
+        cbgSide.add(findViewById(R.id.cbRice));
 
         cbEgg = findViewById(R.id.cbEgg);
         cbExtraSauce = findViewById(R.id.cbExtraSauce);
         cbCheese = findViewById(R.id.cbCheese);
 
-        rbWater = findViewById(R.id.rbWater);
-        rbIcedTea = findViewById(R.id.rbIcedTea);
-        rbSoda = findViewById(R.id.rbSoda);
-        rbFruitShake = findViewById(R.id.rbFruitShake);
-
-        isDrinkSelected = false;
-        isSideSelected = false;
+        rgDrink = findViewById(R.id.rgDrink);
 
         DataHolder.selectedSideName = new ArrayList<>();
         DataHolder.selectedSidePrice = new ArrayList<>();
         DataHolder.selectedAddonName = new ArrayList<>();
         DataHolder.selectedAddonPrice = new ArrayList<>();
-
-        ivSelectedMain = findViewById(R.id.ivSelectedImage);
-        ivSelectedMain.setImageDrawable(DataHolder.selectedMainDishDrawable);
-
 
     }
 
@@ -81,29 +79,19 @@ public class SelectionItem extends AppCompatActivity {
 
         isSideSelected = false;
 
-        if(cbNone.isChecked()) {
-
-            cbFries.setChecked(false);
-            cbFries.setEnabled(false);
-
-            cbLumpia.setChecked(false);
-            cbLumpia.setEnabled(false);
-
-            cbSoup.setChecked(false);
-            cbSoup.setEnabled(false);
-
-            cbRice.setChecked(false);
-            cbRice.setEnabled(false);
-
+        if(((CheckBox)view).isChecked()) {
+            for (CheckBox c: cbgSide) {
+                if(c.getText().equals("None")) {continue;}
+                c.setChecked(false);
+                c.setEnabled(false);
+            }
         } else {
-
-            cbFries.setEnabled(true);
-            cbLumpia.setEnabled(true);
-            cbSoup.setEnabled(true);
-            cbRice.setEnabled(true);
+            for (CheckBox c: cbgSide) {
+                c.setEnabled(true);
+            }
             numOfSide = 0;
-
         }
+
     }
 
     public void sidePressed(View view) {
@@ -117,37 +105,47 @@ public class SelectionItem extends AppCompatActivity {
         }
 
         if(numOfSide == 2) {
-
-            if(!cbFries.isChecked()){
-                cbFries.setEnabled(false);
+            for (CheckBox c: cbgSide) {
+                if(!c.isChecked()) {
+                    c.setEnabled(false);
+                }
             }
-            if(!cbRice.isChecked()){
-                cbRice.setEnabled(false);
-            }
-            if(!cbSoup.isChecked()){
-                cbSoup.setEnabled(false);
-            }
-            if(!cbLumpia.isChecked()){
-                cbLumpia.setEnabled(false);
-            }
-
         } else {
-
-            cbFries.setEnabled(true);
-            cbLumpia.setEnabled(true);
-            cbSoup.setEnabled(true);
-            cbRice.setEnabled(true);
-
+            for (CheckBox c: cbgSide) {
+                c.setEnabled(true);
+            }
         }
 
         if (numOfSide == 0) {
             isSideSelected = false;
         }
+//        if(numOfSide == 2) {
+//
+//            if(!cbFries.isChecked()){
+//                cbFries.setEnabled(false);
+//            }
+//            if(!cbRice.isChecked()){
+//                cbRice.setEnabled(false);
+//            }
+//            if(!cbSoup.isChecked()){
+//                cbSoup.setEnabled(false);
+//            }
+//            if(!cbLumpia.isChecked()){
+//                cbLumpia.setEnabled(false);
+//            }
+//
+//        } else {
+//
+//            cbFries.setEnabled(true);
+//            cbLumpia.setEnabled(true);
+//            cbSoup.setEnabled(true);
+//            cbRice.setEnabled(true);
+//
+//        }
+
     }
 
-    public void drinkPressed(View view) {
-        isDrinkSelected = true;
-    }
+    public void drinkPressed(View view) { isDrinkSelected = true; }
 
     public void backPressed(View view) {
         this.finish();
@@ -159,43 +157,64 @@ public class SelectionItem extends AppCompatActivity {
         DataHolder.selectedSideName.clear();
 
         if (isSideSelected && isDrinkSelected) {
-            if(cbFries.isChecked()){
-                DataHolder.selectedSideName.add("Fries");
-                DataHolder.selectedSidePrice.add(35.0);
-            }
-            if(cbRice.isChecked()){
-                DataHolder.selectedSideName.add("Extra Rice");
-                DataHolder.selectedSidePrice.add(20.0);
-            }
-            if(cbSoup.isChecked()){
-                DataHolder.selectedSideName.add("Soup");
-                DataHolder.selectedSidePrice.add(25.0);
-            }
-            if(cbLumpia.isChecked()){
-                DataHolder.selectedSideName.add("Lumpia");
-                DataHolder.selectedSidePrice.add(40.0);
+
+            for (CheckBox c: cbgSide) {
+                if (c.isChecked()) {
+                    DataHolder.selectedSideName.add(c.getText().toString());
+                    DataHolder.selectedSidePrice.add(DataHolder.menuItemsMap.get(c.getText().toString()));
+                }
             }
         }
 
+        if (isDrinkSelected) {
+
+            RadioButton rbDrink = findViewById(rgDrink.getCheckedRadioButtonId());
+
+            DataHolder.selectedDrinkName = rbDrink.getText().toString();
+            DataHolder.selectedDrinkPrice = DataHolder.menuItemsMap.get(DataHolder.selectedDrinkName);
+
+        }
+
+
+
+//        if (isSideSelected && isDrinkSelected) {
+//            if(cbFries.isChecked()){
+//                DataHolder.selectedSideName.add("Fries");
+//                DataHolder.selectedSidePrice.add(35.0);
+//            }
+//            if(cbRice.isChecked()){
+//                DataHolder.selectedSideName.add("Extra Rice");
+//                DataHolder.selectedSidePrice.add(20.0);
+//            }
+//            if(cbSoup.isChecked()){
+//                DataHolder.selectedSideName.add("Soup");
+//                DataHolder.selectedSidePrice.add(25.0);
+//            }
+//            if(cbLumpia.isChecked()){
+//                DataHolder.selectedSideName.add("Lumpia");
+//                DataHolder.selectedSidePrice.add(40.0);
+//            }
+//        }
+
         if(isDrinkSelected) {
-
-            if(rbWater.isChecked()) {
-                DataHolder.selectedDrinkName = "Water";
-                DataHolder.selectedDrinkPrice = 0.0;
-            }
-            if(rbSoda.isChecked()) {
-                DataHolder.selectedDrinkName = "Soda";
-                DataHolder.selectedDrinkPrice = 25;
-            }
-            if(rbFruitShake.isChecked()) {
-                DataHolder.selectedDrinkName = "Fruit Shake";
-                DataHolder.selectedDrinkPrice = 45;
-            }
-            if(rbIcedTea.isChecked()) {
-                DataHolder.selectedDrinkName = "Iced Tea";
-                DataHolder.selectedDrinkPrice = 20;
-            }
-
+//
+//            if(rbWater.isChecked()) {
+//                DataHolder.selectedDrinkName = "Water";
+//                DataHolder.selectedDrinkPrice = 0.0;
+//            }
+//            if(rbSoda.isChecked()) {
+//                DataHolder.selectedDrinkName = "Soda";
+//                DataHolder.selectedDrinkPrice = 25;
+//            }
+//            if(rbFruitShake.isChecked()) {
+//                DataHolder.selectedDrinkName = "Fruit Shake";
+//                DataHolder.selectedDrinkPrice = 45;
+//            }
+//            if(rbIcedTea.isChecked()) {
+//                DataHolder.selectedDrinkName = "Iced Tea";
+//                DataHolder.selectedDrinkPrice = 20;
+//            }
+//
             DataHolder.selectedAddonName.clear();
             DataHolder.selectedAddonPrice.clear();
 

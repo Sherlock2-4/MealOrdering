@@ -3,6 +3,7 @@ package com.example.mealordering;
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +30,9 @@ public class OrderForm extends AppCompatActivity {
 
     EditText etName, etPhone, etTime;
     int currentHour = 0, currentMinute = 0;
+    SimpleDateFormat dtf;
+    Calendar calendar;
+    int selectedHour, selectedMinute;
 
     @SuppressLint("NewApi")
     @Override
@@ -40,7 +45,9 @@ public class OrderForm extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm a");
+        dtf = new SimpleDateFormat("hh:mm a");
+
+        calendar = Calendar.getInstance();
 
         currentHour = LocalDateTime.now().getHour();
         currentMinute = LocalDateTime.now().getMinute();
@@ -49,7 +56,9 @@ public class OrderForm extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
 
         etTime = findViewById(R.id.etTime);
-        etTime.setText(convertTime(currentHour, currentMinute));
+        etTime.setText(dtf.format(calendar.getTime()));
+
+        findViewById(R.id.button2).setEnabled(false);
     }
 
     public void setTimePressed(View view) {
@@ -58,9 +67,21 @@ public class OrderForm extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                String time = convertTime(hourOfDay, minute);
+                selectedHour = hourOfDay;
+                selectedMinute = minute;
 
-                etTime.setText(time);
+                Calendar c = Calendar.getInstance();
+                c.set(Calendar.HOUR_OF_DAY, selectedHour);
+                c.set(Calendar.MINUTE, selectedMinute);
+
+                etTime.setText(dtf.format(c.getTime()));
+
+                if(c.after(Calendar.getInstance())) {
+                    findViewById(R.id.button2).setEnabled(true);
+                } else {
+                    findViewById(R.id.button2).setEnabled(false);
+                }
+
             }
         }, currentHour, currentMinute, false);
         tpd.show();
@@ -78,18 +99,18 @@ public class OrderForm extends AppCompatActivity {
         }
     }
 
-    public String convertTime(int hourOfDay, int minute){
-        DecimalFormat df = new DecimalFormat("00");
-
-        String time = "";
-
-        if(hourOfDay > 12){
-            time = hourOfDay-12 + ":" + df.format(minute) + " PM";
-        }else{
-            time = hourOfDay + ":" + df.format(minute) + " AM";
-        }
-        return time;
-    }
+//    public String convertTime(int hourOfDay, int minute){
+//        DecimalFormat df = new DecimalFormat("00");
+//
+//        String time = "";
+//
+//        if(hourOfDay > 12){
+//            time = hourOfDay-12 + ":" + df.format(minute) + " PM";
+//        }else{
+//            time = hourOfDay + ":" + df.format(minute) + " AM";
+//        }
+//        return time;
+//    }
 
     public void backPressed(View view) {
         this.finish();
