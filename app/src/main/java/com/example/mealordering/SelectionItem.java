@@ -28,7 +28,7 @@ public class SelectionItem extends AppCompatActivity {
 
     TextView tvMainDish;
     List<CheckBox> cbgSide;
-    CheckBox cbEgg, cbExtraSauce, cbCheese;
+    List<CheckBox> cbgAddon;
     RadioGroup rgDrink;
     int numOfSide;
     boolean isSideSelected, isDrinkSelected;
@@ -62,9 +62,10 @@ public class SelectionItem extends AppCompatActivity {
         cbgSide.add(findViewById(R.id.cbSoup));
         cbgSide.add(findViewById(R.id.cbRice));
 
-        cbEgg = findViewById(R.id.cbEgg);
-        cbExtraSauce = findViewById(R.id.cbExtraSauce);
-        cbCheese = findViewById(R.id.cbCheese);
+        cbgAddon = new ArrayList<>();
+        cbgAddon.add(findViewById(R.id.cbEgg));
+        cbgAddon.add(findViewById(R.id.cbExtraSauce));
+        cbgAddon.add(findViewById(R.id.cbCheese));
 
         rgDrink = findViewById(R.id.rgDrink);
 
@@ -156,15 +157,8 @@ public class SelectionItem extends AppCompatActivity {
         DataHolder.selectedSidePrice.clear();
         DataHolder.selectedSideName.clear();
 
-        if (isSideSelected && isDrinkSelected) {
-
-            for (CheckBox c: cbgSide) {
-                if (c.isChecked()) {
-                    DataHolder.selectedSideName.add(c.getText().toString());
-                    DataHolder.selectedSidePrice.add(DataHolder.menuItemsMap.get(c.getText().toString()));
-                }
-            }
-        }
+        DataHolder.selectedAddonName.clear();
+        DataHolder.selectedAddonPrice.clear();
 
         if (isDrinkSelected) {
 
@@ -173,6 +167,25 @@ public class SelectionItem extends AppCompatActivity {
             DataHolder.selectedDrinkName = rbDrink.getText().toString();
             DataHolder.selectedDrinkPrice = DataHolder.menuItemsMap.get(DataHolder.selectedDrinkName);
 
+            for (CheckBox c: cbgSide) {
+                if (c.isChecked()) {
+                    DataHolder.selectedSideName.add(c.getText().toString());
+                    DataHolder.selectedSidePrice.add(DataHolder.menuItemsMap.get(c.getText().toString()));
+                }
+            }
+
+            for (CheckBox c: cbgAddon) {
+                if (c.isChecked()) {
+                    DataHolder.selectedAddonName.add(c.getText().toString());
+                    DataHolder.selectedAddonPrice.add(DataHolder.menuItemsMap.get(c.getText().toString()));
+                }
+            }
+
+            Intent i = new Intent(this, OrderForm.class);
+            startActivity(i);
+
+        } else {
+            Toast.makeText(this, "Please select a drink", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -196,7 +209,7 @@ public class SelectionItem extends AppCompatActivity {
 //            }
 //        }
 
-        if(isDrinkSelected) {
+//        if(isDrinkSelected) {
 //
 //            if(rbWater.isChecked()) {
 //                DataHolder.selectedDrinkName = "Water";
@@ -215,27 +228,27 @@ public class SelectionItem extends AppCompatActivity {
 //                DataHolder.selectedDrinkPrice = 20;
 //            }
 //
-            DataHolder.selectedAddonName.clear();
-            DataHolder.selectedAddonPrice.clear();
-
-            if(cbEgg.isChecked()) {
-                DataHolder.selectedAddonName.add("Egg");
-                DataHolder.selectedAddonPrice.add(15.0);
-            }
-            if(cbExtraSauce.isChecked()) {
-                DataHolder.selectedAddonName.add("Extra Sauce");
-                DataHolder.selectedAddonPrice.add(10.0);
-            }
-            if(cbCheese.isChecked()) {
-                DataHolder.selectedAddonName.add("Cheese");
-                DataHolder.selectedAddonPrice.add(20.0);
-            }
-
-            Intent i = new Intent(this, OrderForm.class);
-            startActivity(i);
-
-        } else {
-            Toast.makeText(this, "Please select a drink", Toast.LENGTH_SHORT).show();
-        }
+//            DataHolder.selectedAddonName.clear();
+//            DataHolder.selectedAddonPrice.clear();
+//
+//            if(cbEgg.isChecked()) {
+//                DataHolder.selectedAddonName.add("Egg");
+//                DataHolder.selectedAddonPrice.add(15.0);
+//            }
+//            if(cbExtraSauce.isChecked()) {
+//                DataHolder.selectedAddonName.add("Extra Sauce");
+//                DataHolder.selectedAddonPrice.add(10.0);
+//            }
+//            if(cbCheese.isChecked()) {
+//                DataHolder.selectedAddonName.add("Cheese");
+//                DataHolder.selectedAddonPrice.add(20.0);
+//            }
+//
+//            Intent i = new Intent(this, OrderForm.class);
+//            startActivity(i);
+//
+//        } else {
+//            Toast.makeText(this, "Please select a drink", Toast.LENGTH_SHORT).show();
+//        }
     }
 }
