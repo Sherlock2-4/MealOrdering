@@ -190,7 +190,7 @@ public class SelectionItem extends AppCompatActivity {
 
 
 
-//        if (isSideSelected && isDrinkSelected) {
+//        if (isSideSelected && isDrinkSelected) { old codes
 //            if(cbFries.isChecked()){
 //                DataHolder.selectedSideName.add("Fries");
 //                DataHolder.selectedSidePrice.add(35.0);
